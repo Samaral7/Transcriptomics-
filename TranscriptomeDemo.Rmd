@@ -14,7 +14,7 @@ library(dplyr)
 library(devtools)
 ```
 
-# This code is creatse a data frame with two columns: ids and stage. 
+# This code creates a data frame with two columns: ids and stage. 
 ```{r}
 pheno_data<-data.frame(ids = c("plank01", "plank02", "biofilm01", "biofilm02"),
                        stage = c("planktonic", "planktonic", "biofilm", "biofilm"))
@@ -27,7 +27,7 @@ bg <- ballgown(samples = samples.c, meas='all', pData = pheno_data)
 bg
 ```
 
-# This code is filters the Ballgown object to keep only genes or transcripts with expression variance > 1 across samples. 
+# This code filters the Ballgown object to keep only genes or transcripts with expression variance > 1 across samples. 
 ```{r}
 bg_filt = subset(bg,"rowVars(texpr(bg)) >1",genomesubset=TRUE)
 bg_filt
@@ -45,7 +45,7 @@ transcriptNames=transcriptNames(bg_filt), results_transcripts)
 ```{r}
 results_transcripts[results_transcripts$transcriptNames == "gene-PA0001", ]
 ```
-## The transcript gene-PA0001 is for dnaA. It's id number is 1 and it's fc is 0.9862819. This repesents the how much the expression level of a transcript/gene changes between conditions.The pval and qval are equal at 0.6906561 which means there is no signifance. 
+## The transcript gene-PA0001 is for dnaA. It's id number is 1 and it's fc is 0.9862819. This repesents how much the expression level of a transcript/gene changes between conditions.The pval and qval are equal at 0.6906561, there is no signifance. 
 
 # This code filters for significantly differentially expressed transcripts and returns how many of them were found in a table format. 
 ```{r}
@@ -185,4 +185,4 @@ points(transformed_fpkm ~ jittered_stages,
        pch=21, col="blue", bg="lightblue", cex=1.2)
 ```
 
-## The gene dnaN gene-PA0002 show similar expression levels between biofilm and planktonic conditions. There is no major differences observed between the groups.
+## The gene dnaN gene-PA0002 shows similar expression levels between biofilm and planktonic conditions. There is no major differences observed between the groups.
